@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
     private bool doJump = false;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
         {
             doJump = true;
         }
+
+        animator.SetBool("Running",(hDir!=0)&&(!isJumping));
+        animator.SetBool("Crouching",(vDir<0)&&(!isJumping));
     }
 
     private void FixedUpdate()
